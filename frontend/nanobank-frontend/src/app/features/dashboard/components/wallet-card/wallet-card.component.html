@@ -1,0 +1,143 @@
+<div class="wcard card">
+  <!-- Header -->
+  <div class="wcard-header">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="badge badge-{{ wallet.category.toLowerCase() }}">
+          {{ categoryLabel(wallet.category) }}
+        </span>
+        @if (wallet.status === 'INACTIVE') {
+          <span class="badge" style="background:#33415520;color:#64748b">Inactive</span>
+        }
+      </div>
+      <h3 class="wcard-name">{{ wallet.name }}</h3>
+      <p class="wcard-balance">{{ formatCurrency(wallet.balance) }}</p>
+    </div>
+    <div class="wcard-actions">
+      <button class="btn btn-ghost btn-sm" (click)="showEditWallet.set(!showEditWallet())" title="Edit">✏️</button>
+      <button class="btn btn-ghost btn-sm" (click)="deleteWallet()" title="Delete">🗑️</button>
+    </div>
+  </div>
+
+  <!-- Edit form -->
+  @if (showEditWallet()) {
+    <form [formGroup]="editForm" (ngSubmit)="saveEdit()" class="edit-form">
+      <div class="form-group" style="margin-bottom:8px">
+        <input type="text" formControlName="name" placeholder="Wallet name" />
+      </div>
+      <div class="form-group" style="margin-bottom:8px">
+        <input type="text" formControlName="description" placeholder="Description (optional)" />
+      </div>
+      <div class="flex gap-2">
+        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+        <button type="button" class="btn btn-ghost btn-sm" (click)="showEditWallet.set(false)">Cancel</button>
+      </div>
+    </form>
+  }
+
+  <!-- Filter -->
+  <app-transaction-filter (filterChanged)="onFilterChanged($event)" />
+
+  <!-- Drop zone + transaction list -->
+  <div
+    cdkDropList
+    [id]="wallet.id"
+    [cdkDropListData]="transactions()"
+    [cdkDropListConnectedTo]="otherWalletIds()"
+    (cdkDropListDropped)="onDrop($event)"
+    (cdkDropListEntered)="$event.container.element.nativeElement.classList.add('drop-zone-active')"
+    (cdkDropListExited)="$event.container.element.nativeElement.classList.remove('drop-zone-active')"
+    class="tx-list">
+
+    @if (loadingTx()) {
+      <p class="text-muted text-sm" style="padding:12px 0">Loading…</p>
+    }
+
+    @if (!loadingTx() && transactions().length === 0) {
+      <p class="text-muted text-sm" style="padding:12px 0; text-align:center">
+        No transactions · Drag one here
+      </p>
+    }
+
+    @for (tx of transactions(); track tx.id) {
+      <div class="tx-card" cdkDrag [cdkDragData]="tx">
+        <!-- Drag preview -->
+        <div *cdkDragPreview class="tx-drag-preview">
+          <span [class]="txClass(tx.type)">{{ txSign(tx.type) }}{{ formatCurrency(tx.amount) }}</span>
+          <span class="text-muted text-sm">{{ tx.description || tx.category }}</span>
+        </div>
+
+        <div class="tx-row">
+          <div>
+            <p class="tx-desc">{{ tx.description || tx.category || tx.type }}</p>
+            <p class="text-muted text-sm">{{ tx.occurredAt }}</p>
+          </div>
+          <span [class]="txClass(tx.type)">
+            {{ txSign(tx.type) }}{{ formatCurrency(tx.amount) }}
+          </span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Add transaction -->
+  @if (showAddTx()) {
+    <app-transaction-form
+      [walletId]="wallet.id"
+      [currency]="wallet.currency"
+      (created)="onTransactionCreated()"
+      (cancelled)="showAddTx.set(false)" />
+  } @else {
+    <button class="btn btn-ghost btn-sm w-full mt-2" (click)="showAddTx.set(true)">
+      + Add Transaction
+    </button>
+  }
+</div>
+
+<style>
+.wcard { display: flex; flex-direction: column; gap: 12px; }
+.wcard-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.wcard-name { font-size: 16px; font-weight: 600; margin-top: 6px; }
+.wcard-balance { font-size: 26px; font-weight: 700; margin-top: 2px; }
+.wcard-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+.edit-form {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.tx-list {
+  min-height: 80px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  transition: border-color .2s, background .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tx-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  cursor: grab;
+  transition: border-color .15s;
+  &:hover { border-color: var(--primary); }
+  &:active { cursor: grabbing; }
+}
+.tx-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tx-desc { font-size: 13px; font-weight: 500; }
+
+.tx-drag-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  gap: 12px;
+  min-width: 220px;
+}
+</style>

@@ -1,0 +1,33 @@
+<form [formGroup]="form" class="filter-bar">
+  <select formControlName="type">
+    <option value="">All types</option>
+    <option value="INCOME">Income</option>
+    <option value="EXPENSE">Expense</option>
+    <option value="TRANSFER_IN">Transfer In</option>
+    <option value="TRANSFER_OUT">Transfer Out</option>
+  </select>
+
+  <input type="text" formControlName="category" placeholder="Category…" />
+
+  <input type="date" formControlName="dateFrom" title="From date" />
+  <input type="date" formControlName="dateTo"   title="To date" />
+
+  <button type="button" class="btn btn-ghost btn-sm" (click)="reset()" title="Clear filters">✕</button>
+</form>
+
+<style>
+.filter-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-bar select,
+.filter-bar input {
+  flex: 1;
+  min-width: 80px;
+  padding: 6px 10px;
+  font-size: 12px;
+  height: 32px;
+}
+</style>
