@@ -1,417 +1,195 @@
-<mxfile host="app.diagrams.net" modified="2026-06-16T00:00:00.000Z" agent="Claude" version="21.6.5" type="device">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36" version="29.2.9">
   <diagram name="NanoBank Ledger — Arquitectura" id="nanobank-arch-v1">
-    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1665" dy="2011" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- ============================================================ -->
-        <!--  TITULO GENERAL                                               -->
-        <!-- ============================================================ -->
-        <mxCell id="title" value="NanoBank Ledger — Diagrama de Arquitectura"
-          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;"
-          vertex="1" parent="1">
-          <mxGeometry x="400" y="-50" width="900" height="40" as="geometry" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" value="NanoBank Ledger — Diagrama de Arquitectura" vertex="1">
+          <mxGeometry height="40" width="900" x="400" y="-50" as="geometry" />
         </mxCell>
-
-        <!-- ============================================================ -->
-        <!--  FRONTEND — Angular 17                                        -->
-        <!-- ============================================================ -->
-        <mxCell id="fe" value="FRONTEND — Angular 17"
-          style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;fontColor=#003366;"
-          vertex="1" parent="1">
-          <mxGeometry x="10" y="10" width="1680" height="310" as="geometry" />
+        <mxCell id="fe" parent="1" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;fontColor=#003366;" value="FRONTEND — Angular 17" vertex="1">
+          <mxGeometry height="310" width="1680" x="10" y="10" as="geometry" />
         </mxCell>
-
-        <!-- FE: Infrastructure subgroup -->
-        <mxCell id="fe_infra" value="Infraestructura"
-          style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#9999ff;fontStyle=1;fontSize=11;"
-          vertex="1" parent="fe">
-          <mxGeometry x="15" y="40" width="245" height="250" as="geometry" />
+        <mxCell id="fe_infra" parent="fe" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#9999ff;fontStyle=1;fontSize=11;" value="Infraestructura" vertex="1">
+          <mxGeometry height="250" width="245" x="15" y="40" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_router" value="Angular Router&#xa;/auth/login | /auth/register&#xa;/dashboard"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;"
-          vertex="1" parent="fe_infra">
-          <mxGeometry x="15" y="30" width="215" height="45" as="geometry" />
+        <mxCell id="fe_router" parent="fe_infra" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="Angular Router&#xa;/auth/login | /auth/register&#xa;/dashboard" vertex="1">
+          <mxGeometry height="45" width="215" x="15" y="30" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_guard" value="Auth Guard&#xa;canActivateFn&#xa;→ redirige a /auth/login si !isLoggedIn"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;"
-          vertex="1" parent="fe_infra">
-          <mxGeometry x="15" y="90" width="215" height="50" as="geometry" />
+        <mxCell id="fe_guard" parent="fe_infra" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="Auth Guard&#xa;canActivateFn&#xa;→ redirige a /auth/login si !isLoggedIn" vertex="1">
+          <mxGeometry height="50" width="215" x="15" y="90" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_interceptor" value="JWT Interceptor&#xa;HttpInterceptorFn&#xa;→ agrega Authorization: Bearer &lt;token&gt;"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;"
-          vertex="1" parent="fe_infra">
-          <mxGeometry x="15" y="155" width="215" height="50" as="geometry" />
+        <mxCell id="fe_interceptor" parent="fe_infra" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="JWT Interceptor&#xa;HttpInterceptorFn&#xa;→ agrega Authorization: Bearer &lt;token&gt;" vertex="1">
+          <mxGeometry height="50" width="215" x="15" y="155" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_proxy" value="proxy.conf.json&#xa;/api  →  http://localhost:8080"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;"
-          vertex="1" parent="fe_infra">
-          <mxGeometry x="15" y="218" width="215" height="22" as="geometry" />
+        <mxCell id="fe_proxy" parent="fe_infra" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="proxy.conf.json&#xa;/api  →  http://localhost:8080" vertex="1">
+          <mxGeometry height="22" width="215" x="15" y="218" as="geometry" />
         </mxCell>
-
-        <!-- FE: Components subgroup -->
-        <mxCell id="fe_comps" value="Componentes Standalone  (standalone: true)"
-          style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;"
-          vertex="1" parent="fe">
-          <mxGeometry x="275" y="40" width="780" height="250" as="geometry" />
+        <mxCell id="fe_comps" parent="fe" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="Componentes Standalone  (standalone: true)" vertex="1">
+          <mxGeometry height="250" width="780" x="275" y="40" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_login" value="LoginComponent&#xa;Reactive Form"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="10" y="35" width="160" height="45" as="geometry" />
+        <mxCell id="fe_login" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="LoginComponent&#xa;Reactive Form" vertex="1">
+          <mxGeometry height="45" width="160" x="10" y="35" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_register" value="RegisterComponent&#xa;Reactive Form"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="185" y="35" width="160" height="45" as="geometry" />
+        <mxCell id="fe_register" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="RegisterComponent&#xa;Reactive Form" vertex="1">
+          <mxGeometry height="45" width="160" x="185" y="35" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_dashboard" value="DashboardComponent&#xa;wallets = signal&lt;Wallet[]&gt;([])&#xa;totalBalance = computed()"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="360" y="35" width="200" height="45" as="geometry" />
+        <mxCell id="fe_dashboard" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="DashboardComponent&#xa;wallets = signal&lt;Wallet[]&gt;([])&#xa;totalBalance = computed()" vertex="1">
+          <mxGeometry height="45" width="200" x="360" y="35" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_walletcard" value="WalletCardComponent&#xa;CDK Drag&amp;Drop (cdkDrag / cdkDropList)&#xa;onDrop() llama TransactionService.move()"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="10" y="100" width="215" height="55" as="geometry" />
+        <mxCell id="fe_walletcard" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="WalletCardComponent&#xa;CDK Drag&amp;Drop (cdkDrag / cdkDropList)&#xa;onDrop() llama TransactionService.move()" vertex="1">
+          <mxGeometry height="55" width="215" x="10" y="100" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_walletform" value="WalletFormComponent&#xa;Crear / editar wallet"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="240" y="100" width="175" height="55" as="geometry" />
+        <mxCell id="fe_walletform" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="WalletFormComponent&#xa;Crear / editar wallet" vertex="1">
+          <mxGeometry height="55" width="175" x="240" y="100" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_txfilter" value="TransactionFilterComponent&#xa;filter = signal&lt;TransactionFilter&gt;({})"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="430" y="100" width="210" height="55" as="geometry" />
+        <mxCell id="fe_txfilter" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="TransactionFilterComponent&#xa;filter = signal&lt;TransactionFilter&gt;({})" vertex="1">
+          <mxGeometry height="55" width="210" x="430" y="100" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_txform" value="TransactionFormComponent&#xa;INCOME | EXPENSE"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="655" y="100" width="115" height="55" as="geometry" />
+        <mxCell id="fe_txform" parent="fe_comps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="TransactionFormComponent&#xa;INCOME | EXPENSE" vertex="1">
+          <mxGeometry height="55" width="115" x="655" y="100" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_signals_note" value="⚡ Signals: wallets, loading, showForm, selectedWallet   |   📊 computed(): totalBalance, activeWallets, otherWalletIds"
-          style="text;html=1;strokeColor=none;fillColor=#fffacd;fontSize=10;align=left;verticalAlign=middle;whiteSpace=wrap;"
-          vertex="1" parent="fe_comps">
-          <mxGeometry x="10" y="170" width="520" height="30" as="geometry" />
+        <mxCell id="fe_signals_note" parent="fe_comps" style="text;html=1;strokeColor=none;fillColor=#fffacd;fontSize=10;align=left;verticalAlign=middle;whiteSpace=wrap;" value="⚡ Signals: wallets, loading, showForm, selectedWallet   |   📊 computed(): totalBalance, activeWallets, otherWalletIds" vertex="1">
+          <mxGeometry height="30" width="520" x="10" y="170" as="geometry" />
         </mxCell>
-
-        <!-- FE: Services subgroup -->
-        <mxCell id="fe_svcs" value="Servicios Angular  (providedIn: root)"
-          style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#82b366;fontStyle=1;fontSize=11;"
-          vertex="1" parent="fe">
-          <mxGeometry x="1070" y="40" width="595" height="250" as="geometry" />
+        <mxCell id="fe_svcs" parent="fe" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#82b366;fontStyle=1;fontSize=11;" value="Servicios Angular  (providedIn: root)" vertex="1">
+          <mxGeometry height="250" width="595" x="1070" y="40" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_authsvc" value="AuthService&#xa;login(req) | register(req)&#xa;logout() | getToken()&#xa;currentUser: Signal&lt;AuthResponse|null&gt;&#xa;isLoggedIn: computed()"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="fe_svcs">
-          <mxGeometry x="15" y="30" width="270" height="75" as="geometry" />
+        <mxCell id="fe_authsvc" parent="fe_svcs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="AuthService&#xa;login(req) | register(req)&#xa;logout() | getToken()&#xa;currentUser: Signal&lt;AuthResponse|null&gt;&#xa;isLoggedIn: computed()" vertex="1">
+          <mxGeometry height="75" width="270" x="15" y="30" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_walletsvc" value="WalletService&#xa;getAll(?category) | getById()&#xa;create() | update() | deactivate()&#xa;transfer(id, { destWalletId, amount })"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="fe_svcs">
-          <mxGeometry x="15" y="118" width="270" height="65" as="geometry" />
+        <mxCell id="fe_walletsvc" parent="fe_svcs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="WalletService&#xa;getAll(?category) | getById()&#xa;create() | update() | deactivate()&#xa;transfer(id, { destWalletId, amount })" vertex="1">
+          <mxGeometry height="65" width="270" x="15" y="118" as="geometry" />
         </mxCell>
-
-        <mxCell id="fe_txsvc" value="TransactionService&#xa;getByWallet(walletId, filters, page)&#xa;create(req) | move(txId, destWalletId)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="fe_svcs">
-          <mxGeometry x="15" y="196" width="270" height="45" as="geometry" />
+        <mxCell id="fe_txsvc" parent="fe_svcs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="TransactionService&#xa;getByWallet(walletId, filters, page)&#xa;create(req) | move(txId, destWalletId)" vertex="1">
+          <mxGeometry height="45" width="270" x="15" y="196" as="geometry" />
         </mxCell>
-
-        <!-- ============================================================ -->
-        <!--  BACKEND — Spring Boot 3.3.5 / Java 21                       -->
-        <!-- ============================================================ -->
-        <mxCell id="be" value="BACKEND — Spring Boot 3.3.5 / Java 21"
-          style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;fontColor=#663300;"
-          vertex="1" parent="1">
-          <mxGeometry x="10" y="375" width="1680" height="600" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Security subgroup -->
-        <mxCell id="be_sec" value="Capa de Seguridad  (shared.security)"
-          style="swimlane;startSize=25;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=11;"
-          vertex="1" parent="be">
-          <mxGeometry x="15" y="40" width="275" height="395" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_jwtfilter" value="JwtAuthenticationFilter&#xa;OncePerRequestFilter&#xa;1. Lee Authorization header&#xa;2. Extrae token Bearer&#xa;3. Valida con JwtService&#xa;4. Setea SecurityContextHolder"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;"
-          vertex="1" parent="be_sec">
-          <mxGeometry x="15" y="30" width="245" height="85" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_secconfig" value="SecurityConfig&#xa;Rutas públicas: /auth/**&#xa;Rutas protegidas: todo lo demás&#xa;Stateless — sin sesión HTTP&#xa;csrf().disable()"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;"
-          vertex="1" parent="be_sec">
-          <mxGeometry x="15" y="130" width="245" height="70" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_jwtsvc" value="JwtService&#xa;generateToken(UserDetails): String&#xa;validateToken(token, user): boolean&#xa;extractUsername(token): String&#xa;Algoritmo: HS256 | Exp: 24h"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;"
-          vertex="1" parent="be_sec">
-          <mxGeometry x="15" y="215" width="245" height="75" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_pwdconfig" value="PasswordEncoderConfig  (shared.config)&#xa;BCryptPasswordEncoder(strength=12)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;"
-          vertex="1" parent="be_sec">
-          <mxGeometry x="15" y="305" width="245" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_lazy_note" value="⚠️  @Lazy AuthenticationManager — rompe dependencia circular&#xa;AuthService ↔ SecurityConfig ↔ JwtAuthFilter"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;align=left;"
-          vertex="1" parent="be_sec">
-          <mxGeometry x="15" y="355" width="245" height="30" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Controllers subgroup -->
-        <mxCell id="be_ctrls" value="REST Controllers  (@RestController  /api/v1/...)"
-          style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;"
-          vertex="1" parent="be">
-          <mxGeometry x="305" y="40" width="870" height="150" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_authctrl" value="AuthController&#xa;POST /auth/register&#xa;POST /auth/login"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="be_ctrls">
-          <mxGeometry x="10" y="30" width="215" height="100" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_walletctrl" value="WalletController&#xa;POST   /wallets&#xa;GET    /wallets  (?category=)&#xa;GET    /wallets/{id}&#xa;PUT    /wallets/{id}&#xa;DELETE /wallets/{id}&#xa;POST   /wallets/{id}/transfer"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="be_ctrls">
-          <mxGeometry x="240" y="30" width="235" height="110" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_txctrl" value="TransactionController&#xa;POST  /transactions&#xa;GET   /transactions/wallet/{id}&#xa;      ?type= &amp;category= &amp;dateFrom= &amp;dateTo=&#xa;      &amp;page= &amp;size=  (paginado)&#xa;GET   /transactions/{id}&#xa;PATCH /transactions/{id}/move"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="be_ctrls">
-          <mxGeometry x="490" y="30" width="365" height="110" as="geometry" />
-        </mxCell>
-
-        <!-- BE: GlobalExceptionHandler + Swagger -->
-        <mxCell id="be_exhandler" value="GlobalExceptionHandler&#xa;@RestControllerAdvice&#xa;&#xa;404 → ResourceNotFoundException&#xa;409 → ConflictException&#xa;422 → UnprocessableException&#xa;400 → MethodArgumentNotValid&#xa;401 → Unauthorized&#xa;500 → Internal Server Error"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;"
-          vertex="1" parent="be">
-          <mxGeometry x="1190" y="40" width="225" height="140" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_swagger" value="Swagger / OpenAPI 3&#xa;GET /swagger-ui.html&#xa;Todos los endpoints&#xa;documentados con ejemplos"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;"
-          vertex="1" parent="be">
-          <mxGeometry x="1430" y="40" width="235" height="75" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Application Services subgroup -->
-        <mxCell id="be_appsvc" value="Application Services  (@Service  @Transactional)"
-          style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;"
-          vertex="1" parent="be">
-          <mxGeometry x="305" y="210" width="870" height="120" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_authsvc_be" value="AuthService&#xa;register(req): AuthResponse&#xa;login(req): AuthResponse&#xa;loadUserByUsername(email)&#xa;  implements UserDetailsService"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="be_appsvc">
-          <mxGeometry x="10" y="28" width="215" height="75" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_walletsvc_be" value="WalletService&#xa;create() | findAll() | findById()&#xa;update() | deactivate()&#xa;transfer() — pessimistic lock&#xa;  (orden por UUID evita deadlock)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="be_appsvc">
-          <mxGeometry x="240" y="28" width="235" height="75" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_txsvc_be" value="TransactionService&#xa;create() | findByWallet()&#xa;findById() | move()&#xa;move() — @Transactional + lock wallet&#xa;  reasigna tipo INCOME↔EXPENSE"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="be_appsvc">
-          <mxGeometry x="490" y="28" width="365" height="75" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Domain Models subgroup -->
-        <mxCell id="be_domain" value="Domain Models  (@Entity — hexagonal: domain.model)"
-          style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=11;"
-          vertex="1" parent="be">
-          <mxGeometry x="305" y="350" width="870" height="130" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_user" value="User&#xa;id: UUID&#xa;email: String (unique)&#xa;password: String (BCrypt)&#xa;fullName: String&#xa;role: ROLE_USER | ROLE_ADMIN&#xa;status: ACTIVE | SUSPENDED"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;"
-          vertex="1" parent="be_domain">
-          <mxGeometry x="10" y="28" width="215" height="90" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_wallet_e" value="Wallet&#xa;id: UUID&#xa;user: User (ManyToOne)&#xa;name, currency (default COP)&#xa;category: SAVINGS|EXPENSES|INVESTMENTS|CUSTOM&#xa;balance: BigDecimal (19,4)&#xa;status: ACTIVE | INACTIVE&#xa;credit(amt) | debit(amt)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;"
-          vertex="1" parent="be_domain">
-          <mxGeometry x="240" y="28" width="235" height="90" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_tx_e" value="Transaction&#xa;id: UUID&#xa;wallet: Wallet (ManyToOne)&#xa;user: User (ManyToOne)&#xa;type: INCOME|EXPENSE|TRANSFER_IN|TRANSFER_OUT&#xa;amount: BigDecimal | currency: String&#xa;category: String | occurredAt: LocalDate"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;"
-          vertex="1" parent="be_domain">
-          <mxGeometry x="490" y="28" width="365" height="90" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Repositories subgroup -->
-        <mxCell id="be_repos" value="Repositories  (JpaRepository — infrastructure.persistence)"
-          style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;"
-          vertex="1" parent="be">
-          <mxGeometry x="305" y="500" width="870" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_userrepo" value="UserRepository&#xa;findByEmail(String): Optional&lt;User&gt;"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;"
-          vertex="1" parent="be_repos">
-          <mxGeometry x="10" y="28" width="215" height="35" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_walletrepo" value="WalletRepository&#xa;findByUserId() | findByIdForUpdate()&#xa;existsByUserIdAndNameAndStatus()"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;"
-          vertex="1" parent="be_repos">
-          <mxGeometry x="240" y="28" width="235" height="35" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_txrepo" value="TransactionRepository&#xa;findByFilters(walletId, type, cat, dateFrom, dateTo, pageable)&#xa;findByIdForUpdate() — @Lock(PESSIMISTIC_WRITE)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;"
-          vertex="1" parent="be_repos">
-          <mxGeometry x="490" y="28" width="365" height="35" as="geometry" />
-        </mxCell>
-
-        <!-- BE: Right-side notes -->
-        <mxCell id="be_flyway_note" value="Flyway Migrations&#xa;V1__create_users.sql&#xa;V2__create_wallets.sql&#xa;V3__create_transactions.sql&#xa;→ ejecutadas automáticamente al arrancar"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;fontSize=10;"
-          vertex="1" parent="be">
-          <mxGeometry x="1190" y="200" width="475" height="85" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_hexa_note" value="Patrón Hexagonal (por módulo: auth | wallet | transaction)&#xa;  application.service  →  Casos de uso&#xa;  application.dto      →  Request / Response&#xa;  domain.model         →  Entidades puras (sin Spring)&#xa;  infrastructure.rest  →  Adaptador HTTP (Controller)&#xa;  infrastructure.persistence  →  Adaptador JPA (Repository)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffacd;strokeColor=#d6b656;fontSize=10;align=left;"
-          vertex="1" parent="be">
-          <mxGeometry x="1190" y="300" width="475" height="100" as="geometry" />
-        </mxCell>
-
-        <mxCell id="be_tests_note" value="Tests: JUnit 5 + Mockito&#xa;80 tests | BUILD SUCCESS&#xa;JaCoCo ≥80% LINE  ≥75% BRANCH"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;"
-          vertex="1" parent="be">
-          <mxGeometry x="1190" y="420" width="475" height="55" as="geometry" />
-        </mxCell>
-
-        <!-- ============================================================ -->
-        <!--  DATABASE                                                      -->
-        <!-- ============================================================ -->
-        <mxCell id="db" value="BASE DE DATOS"
-          style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;fontColor=#003300;"
-          vertex="1" parent="1">
-          <mxGeometry x="10" y="1025" width="1680" height="145" as="geometry" />
-        </mxCell>
-
-        <mxCell id="db_h2" value="H2 Database&#xa;Perfil: dev (default)&#xa;MODE=PostgreSQL (compatible)&#xa;In-memory — zero setup local"
-          style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;"
-          vertex="1" parent="db">
-          <mxGeometry x="70" y="35" width="230" height="85" as="geometry" />
-        </mxCell>
-
-        <mxCell id="db_pg" value="PostgreSQL&#xa;Perfil: prod&#xa;SPRING_DATASOURCE_URL&#xa;SPRING_DATASOURCE_PASSWORD"
-          style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;"
-          vertex="1" parent="db">
-          <mxGeometry x="380" y="35" width="230" height="85" as="geometry" />
-        </mxCell>
-
-        <mxCell id="db_flyway" value="Flyway — Versionado de Schema&#xa;3 scripts SQL versionados (V1 → V3)&#xa;Orden: users → wallets → transactions&#xa;FK constraints + índices únicos"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;fontSize=11;"
-          vertex="1" parent="db">
-          <mxGeometry x="700" y="40" width="310" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="db_schema" value="Esquema principal:&#xa;users (id, email, password, full_name, role, status, created_at)&#xa;wallets (id, user_id FK, name, category, balance, currency, status)&#xa;transactions (id, wallet_id FK, user_id FK, type, amount, currency, category, occurred_at)"
-          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#82b366;fontSize=10;align=left;"
-          vertex="1" parent="db">
-          <mxGeometry x="1090" y="35" width="575" height="85" as="geometry" />
-        </mxCell>
-
-        <!-- ============================================================ -->
-        <!--  CONNECTIONS                                                   -->
-        <!-- ============================================================ -->
-
-        <!-- Frontend Services → Backend (HTTP + JWT) -->
-        <mxCell id="arr_http" value="HTTP REST + Authorization: Bearer &lt;JWT&gt;&#xa;(proxy /api → localhost:8080)"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0000cc;fontColor=#0000cc;fontStyle=1;fontSize=11;strokeWidth=2;"
-          edge="1" source="fe_svcs" target="be" parent="1">
+        <mxCell id="arr_guard_auth" edge="1" parent="fe" source="fe_guard" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;" target="fe_authsvc" value="isLoggedIn()">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Backend → Database (JPA) -->
-        <mxCell id="arr_jpa" value="Spring Data JPA / JDBC"
-          style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#006600;fontColor=#006600;fontStyle=1;fontSize=11;strokeWidth=2;"
-          edge="1" source="be_repos" target="db" parent="1">
+        <mxCell id="arr_int_auth" edge="1" parent="fe" source="fe_interceptor" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;" target="fe_authsvc" value="getToken()">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Backend: Security → Controllers -->
-        <mxCell id="arr_sec_ctrl" value="filtra cada request"
-          style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;"
-          edge="1" source="be_sec" target="be_ctrls" parent="be">
+        <mxCell id="arr_comps_svcs" edge="1" parent="fe" source="fe_comps" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#82b366;fontSize=10;" target="fe_svcs" value="inject()">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Backend: Controllers → Services -->
-        <mxCell id="arr_ctrl_svc" value=""
-          style="edgeStyle=orthogonalEdgeStyle;"
-          edge="1" source="be_ctrls" target="be_appsvc" parent="be">
+        <mxCell id="be" parent="1" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;fontColor=#663300;" value="BACKEND — Spring Boot 3.3.5 / Java 21" vertex="1">
+          <mxGeometry height="600" width="1680" x="10" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="be_sec" parent="be" style="swimlane;startSize=25;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=11;" value="Capa de Seguridad  (shared.security)" vertex="1">
+          <mxGeometry height="395" width="275" x="15" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="be_jwtfilter" parent="be_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="JwtAuthenticationFilter&#xa;OncePerRequestFilter&#xa;1. Lee Authorization header&#xa;2. Extrae token Bearer&#xa;3. Valida con JwtService&#xa;4. Setea SecurityContextHolder" vertex="1">
+          <mxGeometry height="85" width="245" x="15" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="be_secconfig" parent="be_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="SecurityConfig&#xa;Rutas públicas: /auth/**&#xa;Rutas protegidas: todo lo demás&#xa;Stateless — sin sesión HTTP&#xa;csrf().disable()" vertex="1">
+          <mxGeometry height="70" width="245" x="15" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="be_jwtsvc" parent="be_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="JwtService&#xa;generateToken(UserDetails): String&#xa;validateToken(token, user): boolean&#xa;extractUsername(token): String&#xa;Algoritmo: HS256 | Exp: 24h" vertex="1">
+          <mxGeometry height="75" width="245" x="15" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="be_pwdconfig" parent="be_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="PasswordEncoderConfig  (shared.config)&#xa;BCryptPasswordEncoder(strength=12)" vertex="1">
+          <mxGeometry height="40" width="245" x="15" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="be_lazy_note" parent="be_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;align=left;" value="⚠️  @Lazy AuthenticationManager — rompe dependencia circular&#xa;AuthService ↔ SecurityConfig ↔ JwtAuthFilter" vertex="1">
+          <mxGeometry height="30" width="245" x="15" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="be_ctrls" parent="be" style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" value="REST Controllers  (@RestController  /api/v1/...)" vertex="1">
+          <mxGeometry height="150" width="870" x="305" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="be_authctrl" parent="be_ctrls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="AuthController&#xa;POST /auth/register&#xa;POST /auth/login" vertex="1">
+          <mxGeometry height="100" width="215" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="be_walletctrl" parent="be_ctrls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="WalletController&#xa;POST   /wallets&#xa;GET    /wallets  (?category=)&#xa;GET    /wallets/{id}&#xa;PUT    /wallets/{id}&#xa;DELETE /wallets/{id}&#xa;POST   /wallets/{id}/transfer" vertex="1">
+          <mxGeometry height="110" width="235" x="240" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="be_txctrl" parent="be_ctrls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="TransactionController&#xa;POST  /transactions&#xa;GET   /transactions/wallet/{id}&#xa;      ?type= &amp;category= &amp;dateFrom= &amp;dateTo=&#xa;      &amp;page= &amp;size=  (paginado)&#xa;GET   /transactions/{id}&#xa;PATCH /transactions/{id}/move" vertex="1">
+          <mxGeometry height="110" width="365" x="490" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="be_exhandler" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="GlobalExceptionHandler&#xa;@RestControllerAdvice&#xa;&#xa;404 → ResourceNotFoundException&#xa;409 → ConflictException&#xa;422 → UnprocessableException&#xa;400 → MethodArgumentNotValid&#xa;401 → Unauthorized&#xa;500 → Internal Server Error" vertex="1">
+          <mxGeometry height="140" width="225" x="1190" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="be_swagger" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="Swagger / OpenAPI 3&#xa;GET /swagger-ui.html&#xa;Todos los endpoints&#xa;documentados con ejemplos" vertex="1">
+          <mxGeometry height="75" width="235" x="1430" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="be_appsvc" parent="be" style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" value="Application Services  (@Service  @Transactional)" vertex="1">
+          <mxGeometry height="120" width="870" x="305" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="be_authsvc_be" parent="be_appsvc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="AuthService&#xa;register(req): AuthResponse&#xa;login(req): AuthResponse&#xa;loadUserByUsername(email)&#xa;  implements UserDetailsService" vertex="1">
+          <mxGeometry height="75" width="215" x="10" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_walletsvc_be" parent="be_appsvc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="WalletService&#xa;create() | findAll() | findById()&#xa;update() | deactivate()&#xa;transfer() — pessimistic lock&#xa;  (orden por UUID evita deadlock)" vertex="1">
+          <mxGeometry height="75" width="235" x="240" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_txsvc_be" parent="be_appsvc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="TransactionService&#xa;create() | findByWallet()&#xa;findById() | move()&#xa;move() — @Transactional + lock wallet&#xa;  reasigna tipo INCOME↔EXPENSE" vertex="1">
+          <mxGeometry height="75" width="365" x="490" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_domain" parent="be" style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=11;" value="Domain Models  (@Entity — hexagonal: domain.model)" vertex="1">
+          <mxGeometry height="130" width="870" x="305" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="be_user" parent="be_domain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="User&#xa;id: UUID&#xa;email: String (unique)&#xa;password: String (BCrypt)&#xa;fullName: String&#xa;role: ROLE_USER | ROLE_ADMIN&#xa;status: ACTIVE | SUSPENDED" vertex="1">
+          <mxGeometry height="90" width="215" x="10" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_wallet_e" parent="be_domain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="Wallet&#xa;id: UUID&#xa;user: User (ManyToOne)&#xa;name, currency (default COP)&#xa;category: SAVINGS|EXPENSES|INVESTMENTS|CUSTOM&#xa;balance: BigDecimal (19,4)&#xa;status: ACTIVE | INACTIVE&#xa;credit(amt) | debit(amt)" vertex="1">
+          <mxGeometry height="102" width="235" x="240" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_tx_e" parent="be_domain" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="Transaction&#xa;id: UUID&#xa;wallet: Wallet (ManyToOne)&#xa;user: User (ManyToOne)&#xa;type: INCOME|EXPENSE|TRANSFER_IN|TRANSFER_OUT&#xa;amount: BigDecimal | currency: String&#xa;category: String | occurredAt: LocalDate" vertex="1">
+          <mxGeometry height="90" width="365" x="490" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_repos" parent="be" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" value="Repositories  (JpaRepository — infrastructure.persistence)" vertex="1">
+          <mxGeometry height="80" width="870" x="305" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="be_userrepo" parent="be_repos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="UserRepository&#xa;findByEmail(String): Optional&lt;User&gt;" vertex="1">
+          <mxGeometry height="35" width="215" x="10" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_walletrepo" parent="be_repos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="WalletRepository&#xa;findByUserId() | findByIdForUpdate()&#xa;existsByUserIdAndNameAndStatus()" vertex="1">
+          <mxGeometry height="35" width="235" x="240" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_txrepo" parent="be_repos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="TransactionRepository&#xa;findByFilters(walletId, type, cat, dateFrom, dateTo, pageable)&#xa;findByIdForUpdate() — @Lock(PESSIMISTIC_WRITE)" vertex="1">
+          <mxGeometry height="35" width="365" x="490" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="be_flyway_note" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;fontSize=10;" value="Flyway Migrations&#xa;V1__create_users.sql&#xa;V2__create_wallets.sql&#xa;V3__create_transactions.sql&#xa;→ ejecutadas automáticamente al arrancar" vertex="1">
+          <mxGeometry height="85" width="475" x="1190" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="be_hexa_note" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffacd;strokeColor=#d6b656;fontSize=10;align=left;" value="Patrón Hexagonal (por módulo: auth | wallet | transaction)&#xa;  application.service  →  Casos de uso&#xa;  application.dto      →  Request / Response&#xa;  domain.model         →  Entidades puras (sin Spring)&#xa;  infrastructure.rest  →  Adaptador HTTP (Controller)&#xa;  infrastructure.persistence  →  Adaptador JPA (Repository)" vertex="1">
+          <mxGeometry height="100" width="475" x="1190" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="be_tests_note" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="Tests: JUnit 5 + Mockito&#xa;80 tests | BUILD SUCCESS&#xa;JaCoCo ≥80% LINE  ≥75% BRANCH" vertex="1">
+          <mxGeometry height="55" width="475" x="1190" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_sec_ctrl" edge="1" parent="be" source="be_sec" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;" target="be_ctrls" value="filtra cada request">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Backend: Services → Domain -->
-        <mxCell id="arr_svc_domain" value=""
-          style="edgeStyle=orthogonalEdgeStyle;"
-          edge="1" source="be_appsvc" target="be_domain" parent="be">
+        <mxCell id="arr_ctrl_svc" edge="1" parent="be" source="be_ctrls" style="edgeStyle=orthogonalEdgeStyle;" target="be_appsvc" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Backend: Services → Repos -->
-        <mxCell id="arr_svc_repo" value=""
-          style="edgeStyle=orthogonalEdgeStyle;"
-          edge="1" source="be_appsvc" target="be_repos" parent="be">
+        <mxCell id="arr_svc_domain" edge="1" parent="be" source="be_appsvc" style="edgeStyle=orthogonalEdgeStyle;" target="be_domain" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Frontend: Guard → AuthService -->
-        <mxCell id="arr_guard_auth" value="isLoggedIn()"
-          style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;"
-          edge="1" source="fe_guard" target="fe_authsvc" parent="fe">
+        <mxCell id="arr_svc_repo" edge="1" parent="be" source="be_appsvc" style="edgeStyle=orthogonalEdgeStyle;" target="be_repos" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Frontend: Interceptor → AuthService -->
-        <mxCell id="arr_int_auth" value="getToken()"
-          style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;fontSize=10;"
-          edge="1" source="fe_interceptor" target="fe_authsvc" parent="fe">
+        <mxCell id="db" parent="1" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;fontColor=#003300;" value="BASE DE DATOS" vertex="1">
+          <mxGeometry height="145" width="1680" x="10" y="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="db_h2" parent="db" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="H2 Database&#xa;Perfil: dev (default)&#xa;MODE=PostgreSQL (compatible)&#xa;In-memory — zero setup local" vertex="1">
+          <mxGeometry height="85" width="230" x="70" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="db_pg" parent="db" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="PostgreSQL&#xa;Perfil: prod&#xa;SPRING_DATASOURCE_URL&#xa;SPRING_DATASOURCE_PASSWORD" vertex="1">
+          <mxGeometry height="85" width="230" x="380" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="db_flyway" parent="db" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;fontSize=11;" value="Flyway — Versionado de Schema&#xa;3 scripts SQL versionados (V1 → V3)&#xa;Orden: users → wallets → transactions&#xa;FK constraints + índices únicos" vertex="1">
+          <mxGeometry height="80" width="310" x="700" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="db_schema" parent="db" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#82b366;fontSize=10;align=left;" value="Esquema principal:&#xa;users (id, email, password, full_name, role, status, created_at)&#xa;wallets (id, user_id FK, name, category, balance, currency, status)&#xa;transactions (id, wallet_id FK, user_id FK, type, amount, currency, category, occurred_at)" vertex="1">
+          <mxGeometry height="85" width="575" x="1090" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_http" edge="1" parent="1" source="fe_svcs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0000cc;fontColor=#0000cc;fontStyle=1;fontSize=11;strokeWidth=2;" target="be" value="HTTP REST + Authorization: Bearer &lt;JWT&gt;&#xa;(proxy /api → localhost:8080)">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Internal Frontend: Components → Services -->
-        <mxCell id="arr_comps_svcs" value="inject()"
-          style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#82b366;fontSize=10;"
-          edge="1" source="fe_comps" target="fe_svcs" parent="fe">
+        <mxCell id="arr_jpa" edge="1" parent="1" source="be_repos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#006600;fontColor=#006600;fontStyle=1;fontSize=11;strokeWidth=2;" target="db" value="Spring Data JPA / JDBC">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
